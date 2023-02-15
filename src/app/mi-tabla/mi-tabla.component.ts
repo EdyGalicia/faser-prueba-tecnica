@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ColumnMode } from '@swimlane/ngx-datatable';
+import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
 import { AppService } from '../app.service';
 import { Tarea } from '../tarea';
 
@@ -17,6 +17,7 @@ export class MiTablaComponent implements OnInit {
   selected : Tarea[] = [];
 
   ColumnMode = ColumnMode;
+  SelectionType = SelectionType;
 
   // ChangeDetectorRef
   constructor(public service: AppService) { }
@@ -37,6 +38,14 @@ export class MiTablaComponent implements OnInit {
     }else{
       alert("Complete los campos de la tarea");
     }
+  }
+
+  // Control para seleccionar una o varias filas
+  onSelect({ selected }) {
+    // limio el arreglo
+    this.selected.splice(0, this.selected.length);
+    // agrego los elementos seleccionados
+    this.selected.push(...selected);
   }
 
 }

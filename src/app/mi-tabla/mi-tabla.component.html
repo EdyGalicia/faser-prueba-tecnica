@@ -1,67 +1,96 @@
 <!-- AGREGAR TAREA -->
 <p>
-    <a
-      class="btn btn-primary"
-      data-bs-toggle="collapse"
-      href="#collapseExample"
-      role="button"
-      aria-expanded="false"
-      aria-controls="collapseExample"
-    >
-      Agregar tarea
-    </a>
-  </p>
-  <div class="collapse" id="collapseExample">
-    <div class="card card-body">
-      <form (ngSubmit)="onSubmit()">
-        <div class="mb-3">
-          <label for="titulo" class="form-label">Título</label>
-          <input
-            type="email"
-            class="form-control"
-            id="titulo"
-            name="titulo"
-            autocomplete="off"
-            placeholder="tarea..."
-            [(ngModel)]="titulo"
-            required
-          />
-        </div>
-        <div class="mb-3">
-          <label for="minutos" class="form-label">Minutos</label>
-          <input
-            type="number"
-            class="form-control"
-            id="minutos"
-            name="minutos"
-            [(ngModel)]="minutos"
-            required
-          />
-        </div>
-        <button type="submit" class="btn btn-primary mb-3">Guardar</button>
-      </form>
-    </div>
+  <a
+    class="btn btn-primary"
+    data-bs-toggle="collapse"
+    href="#collapseExample"
+    role="button"
+    aria-expanded="false"
+    aria-controls="collapseExample"
+  >
+    Agregar tarea
+  </a>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="titulo" class="form-label">Título</label>
+        <input
+          type="email"
+          class="form-control"
+          id="titulo"
+          name="titulo"
+          autocomplete="off"
+          placeholder="tarea..."
+          [(ngModel)]="titulo"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="minutos" class="form-label">Minutos</label>
+        <input
+          type="number"
+          class="form-control"
+          id="minutos"
+          name="minutos"
+          [(ngModel)]="minutos"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-primary mb-3">Guardar</button>
+    </form>
   </div>
+</div>
 
 <div>
-    <div style="float: left; width: 100%">
-      <ngx-datatable
-        style="width: 90%"
-        class="material"
-        [rows]="tareas"
-        [columnMode]="ColumnMode.force"
-        [headerHeight]="50"
-        [footerHeight]="50"
-        rowHeight="auto"
-        [limit]="10"
-      >
-        <ngx-datatable-column
-          name="Titulo"
-          [sortable]="false"
-        ></ngx-datatable-column>
-        <ngx-datatable-column
-          name="Minutos"
-          [sortable]="false"
-        ></ngx-datatable-column>
-      </ngx-datatable>
-    </div>
+  <div style="float: left; width: 75%">
+    <ngx-datatable
+      style="width: 90%"
+      class="material"
+      [rows]="tareas"
+      [columnMode]="ColumnMode.force"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      rowHeight="auto"
+      [limit]="10"
+      [selected]="selected"
+      [selectionType]="SelectionType.checkbox"
+      [selectAllRowsOnPage]="false"
+      (select)="onSelect($event)"
+    >
+    <ngx-datatable-column
+      [width]="30"
+      [sortable]="false"
+      [canAutoResize]="false"
+      [draggable]="false"
+      [resizeable]="false"
+      [headerCheckboxable]="true"
+      [checkboxable]="true"
+    >
+    </ngx-datatable-column>
+      <ngx-datatable-column
+        name="Titulo"
+        [sortable]="false"
+      ></ngx-datatable-column>
+      <ngx-datatable-column
+        name="Minutos"
+        [sortable]="false"
+      ></ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+
+  <!-- recueadro auxiliar -->
+  <div class="selected-column">
+    <h4>
+      Tareas seleccionadas: <small>({{ selected?.length }})</small>
+    </h4>
+    <ul>
+      <li *ngFor="let sel of selected">
+        {{ sel.titulo }}
+      </li>
+      <li *ngIf="!selected?.length">No hay tareas seleccionadas</li>
+    </ul>
+  </div>
+
+</div>
