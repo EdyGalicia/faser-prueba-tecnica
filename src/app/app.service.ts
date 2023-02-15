@@ -36,5 +36,20 @@ export class AppService {
     this.tareas = tareas;
   }
 
-  
+  public async eliminarTarea(seleccionados: Tarea[]) {
+    try {
+      // recorro el arreglo de tareas seleccionadas
+      seleccionados.forEach((tarea) => {
+        // obtengo el indice en mi arreglo de tareas de la tarea seleccionada
+        let index = this.tareas.findIndex((obj) => obj.id === tarea.id);
+
+        // Si el objeto existe, eliminarlo del array
+        if (index !== -1) {
+          this.tareas.splice(index, 1);
+        }
+      });
+    } catch (error) {
+      return null;
+    }
+  }
 }

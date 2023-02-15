@@ -48,4 +48,14 @@ export class MiTablaComponent implements OnInit {
     this.selected.push(...selected);
   }
 
+  eliminar(){
+    this.service.eliminarTarea(this.selected);
+
+    this.tareas = [...this.tareas];
+    this.service.actualizar(this.tareas);
+
+    // desmarcar las filas seleccionadas
+    this.selected = [];
+  }
+
 }
