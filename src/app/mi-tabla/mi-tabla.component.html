@@ -1,3 +1,48 @@
+<!-- AGREGAR TAREA -->
+<p>
+    <a
+      class="btn btn-primary"
+      data-bs-toggle="collapse"
+      href="#collapseExample"
+      role="button"
+      aria-expanded="false"
+      aria-controls="collapseExample"
+    >
+      Agregar tarea
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      <form (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Título</label>
+          <input
+            type="email"
+            class="form-control"
+            id="titulo"
+            name="titulo"
+            autocomplete="off"
+            placeholder="tarea..."
+            [(ngModel)]="titulo"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="minutos" class="form-label">Minutos</label>
+          <input
+            type="number"
+            class="form-control"
+            id="minutos"
+            name="minutos"
+            [(ngModel)]="minutos"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary mb-3">Guardar</button>
+      </form>
+    </div>
+  </div>
+
 <div>
     <div style="float: left; width: 100%">
       <ngx-datatable

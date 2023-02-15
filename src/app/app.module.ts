@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { AppService } from './app.service';
 import { MiTablaComponent } from './mi-tabla/mi-tabla.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
 	declarations: [
@@ -14,7 +15,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
-		NgxDatatableModule
+		NgxDatatableModule,
+		FormsModule
 	],
 	providers: [ AppService ],
 	bootstrap: [ AppComponent ]
