@@ -66,23 +66,23 @@
       [selectAllRowsOnPage]="false"
       (select)="onSelect($event)"
     >
-    <ngx-datatable-column
-      [width]="30"
-      [sortable]="false"
-      [canAutoResize]="false"
-      [draggable]="false"
-      [resizeable]="false"
-      [headerCheckboxable]="true"
-      [checkboxable]="true"
-    >
-    </ngx-datatable-column>
+      <ngx-datatable-column
+        [width]="30"
+        [sortable]="false"
+        [canAutoResize]="false"
+        [draggable]="false"
+        [resizeable]="false"
+        [headerCheckboxable]="true"
+        [checkboxable]="true"
+      >
+      </ngx-datatable-column>
       <ngx-datatable-column
         name="Titulo"
-        [sortable]="false"
+        [sortable]="true"
       ></ngx-datatable-column>
       <ngx-datatable-column
         name="Minutos"
-        [sortable]="false"
+        [sortable]="true"
       ></ngx-datatable-column>
     </ngx-datatable>
   </div>
@@ -99,5 +99,4 @@
       <li *ngIf="!selected?.length">No hay tareas seleccionadas</li>
     </ul>
   </div>
-
 </div>
