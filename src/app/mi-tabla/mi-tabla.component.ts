@@ -68,4 +68,14 @@ export class MiTablaComponent implements OnInit {
     this.selected = [];
   }
 
+  revolver(){
+    this.service.aleatorio();
+
+    this.tareas = [...this.tareas];
+    this.service.actualizar(this.tareas);
+
+    // desmarcar las filas seleccionadas
+    this.selected = [];
+  }
+
 }
