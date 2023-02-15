@@ -1,0 +1,22 @@
+<div>
+    <div style="float: left; width: 100%">
+      <ngx-datatable
+        style="width: 90%"
+        class="material"
+        [rows]="tareas"
+        [columnMode]="ColumnMode.force"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        rowHeight="auto"
+        [limit]="10"
+      >
+        <ngx-datatable-column
+          name="Titulo"
+          [sortable]="false"
+        ></ngx-datatable-column>
+        <ngx-datatable-column
+          name="Minutos"
+          [sortable]="false"
+        ></ngx-datatable-column>
+      </ngx-datatable>
+    </div>

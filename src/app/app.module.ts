@@ -3,14 +3,18 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
+import { MiTablaComponent } from './mi-tabla/mi-tabla.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
 	declarations: [
-		AppComponent
+		AppComponent,
+		MiTablaComponent
 	],
 	imports: [
 		BrowserModule,
-		AppRoutingModule
+		AppRoutingModule,
+		NgxDatatableModule
 	],
 	providers: [ AppService ],
 	bootstrap: [ AppComponent ]
