@@ -58,4 +58,14 @@ export class MiTablaComponent implements OnInit {
     this.selected = [];
   }
 
+  hacerFavorito(){
+    this.service.hacerFavorito(this.selected);
+    
+    this.tareas = [...this.tareas];
+    this.service.actualizar(this.tareas);
+
+    // desmarcar las filas seleccionadas
+    this.selected = [];
+  }
+
 }

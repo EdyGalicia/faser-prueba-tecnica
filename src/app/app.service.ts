@@ -52,4 +52,24 @@ export class AppService {
       return null;
     }
   }
+
+  public async hacerFavorito(seleccionados: Tarea[]) {
+    try {
+      seleccionados.forEach((tarea) => {
+        let index = this.tareas.findIndex((obj) => obj.id === tarea.id);
+
+        // Si el objeto existe, eliminarlo del array
+        if (index !== -1) {
+            // Si no tiene marcador de favorito al inicio, se lo agrego. Si ya lo tiene, lo quito.
+          if (!this.tareas[index].titulo.startsWith("💗")) {
+            this.tareas[index].titulo = "💗".concat(this.tareas[index].titulo);
+          } else {
+            this.tareas[index].titulo = this.tareas[index].titulo.substring(2);
+          }
+        }
+      });
+    } catch (error) {
+      return null;
+    }
+  }
 }
